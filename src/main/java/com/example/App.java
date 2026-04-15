@@ -6,15 +6,16 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 
 public class App {
+
     public static void main(String[] args) {
 
         System.out.println("Starting Login Test...");
 
-        /
+        // Chrome options for Linux/Jenkins
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--no-sandbox");
         options.addArguments("--disable-dev-shm-usage");
-        options.addArguments("--headless=new"); // remove this if you want browser UI
+        options.addArguments("--headless=new");
 
         WebDriver driver = new ChromeDriver(options);
 
