@@ -3,28 +3,29 @@ package com.example;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 
 public class App {
     public static void main(String[] args) {
 
         System.out.println("Starting Login Test...");
 
-        WebDriver driver = new ChromeDriver();
+        /
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("--no-sandbox");
+        options.addArguments("--disable-dev-shm-usage");
+        options.addArguments("--headless=new"); // remove this if you want browser UI
+
+        WebDriver driver = new ChromeDriver(options);
 
         try {
             driver.get("https://practicetestautomation.com/practice-test-login/");
             driver.manage().window().maximize();
 
-            // Enter username
             driver.findElement(By.id("username")).sendKeys("student");
-
-            // Enter password
             driver.findElement(By.id("password")).sendKeys("Password123");
-
-            // Click submit
             driver.findElement(By.id("submit")).click();
 
-            // Small wait to see result
             Thread.sleep(3000);
 
             System.out.println("Login Test Completed!");
